@@ -14,6 +14,12 @@
     </properties>
 
     <dependencies>
+        <!-- required dependency for java-fpga-wrapper library that is using C code to communicate with FPGA card -->
+        <dependency>
+            <groupId>cz.vutbr.feec</groupId>
+            <artifactId>fpga-wrapper-java</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>de.jensd</groupId>
             <artifactId>fontawesomefx</artifactId>
