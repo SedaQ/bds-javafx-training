@@ -28,21 +28,13 @@ public class MainController {
     @FXML
     public Label passwordLabel;
     @FXML
-    private VBox fpga;
-    @FXML
-    private MenuBar menuBar;
-    @FXML
     private Button signInButton;
     @FXML
     private TextField usernameTextfield;
     @FXML
     private PasswordField passwordTextField;
 
-    // Reference to the main application.
-    private App mainApp;
-
     public MainController() {
-//		usersTabPaneController.ini
     }
 
     @FXML
@@ -60,15 +52,6 @@ public class MainController {
                 handleSignIn();
             }
         });
-    }
-
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp
-     */
-    public void setMainApp(App mainApp) {
-        this.mainApp = mainApp;
     }
 
     public void signInActionHandler(ActionEvent event) {
@@ -92,7 +75,7 @@ public class MainController {
     private void showDashboardWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../Dashboard.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("../fxml/Dashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 600);
             Stage stage = new Stage();
             stage.setTitle("Demonstrator of HW Crypto Accelerator");
@@ -101,9 +84,9 @@ public class MainController {
             Stage stageOld = (Stage) signInButton.getScene().getWindow();
             stageOld.close();
 
-
             stage.getIcons().add(new Image(App.class.getResourceAsStream("logos/vut.jpg")));
             authConfirmDialog();
+
             stage.show();
         } catch (IOException e) {
             System.out.println(e);
@@ -124,7 +107,6 @@ public class MainController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logging confirmation");
         alert.setHeaderText("You were successfully logged in.");
-//        alert.setContentText("Are you ok with this?");
 
         Timeline idlestage = new Timeline(new KeyFrame(Duration.seconds(3), new EventHandler<ActionEvent>() {
 
