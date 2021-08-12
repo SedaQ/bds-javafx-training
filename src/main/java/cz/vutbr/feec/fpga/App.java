@@ -4,6 +4,7 @@ import cz.vutbr.feec.fpga.controllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -29,9 +30,10 @@ public class App extends Application {
 		primaryStage.setTitle("Demonstrator of HW Crypto Accelerator");
 		Scene scene = new Scene(mainStage);
 		setUserAgentStylesheet(STYLESHEET_MODENA);
-		String myStyle = getClass().getResource("/css/myStyle.css").toExternalForm();
+		String myStyle = getClass().getResource("css/myStyle.css").toExternalForm();
 		scene.getStylesheets().add(myStyle);
 
+		primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("logos/vut.jpg")));
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

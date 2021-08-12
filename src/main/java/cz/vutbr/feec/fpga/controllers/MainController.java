@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
@@ -100,6 +101,8 @@ public class MainController {
             Stage stageOld = (Stage) signInButton.getScene().getWindow();
             stageOld.close();
 
+
+            stage.getIcons().add(new Image(App.class.getResourceAsStream("logos/vut.jpg")));
             authConfirmDialog();
             stage.show();
         } catch (IOException e) {
