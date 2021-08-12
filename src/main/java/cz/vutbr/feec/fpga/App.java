@@ -30,6 +30,7 @@ public class App extends Application {
 		Scene scene = new Scene(mainStage);
 		String modenaCss = getClass().getResource("/css/modena.css").toExternalForm();
 		scene.getStylesheets().add(modenaCss);
+		setUserAgentStylesheet(STYLESHEET_MODENA);
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
