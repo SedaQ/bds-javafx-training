@@ -43,14 +43,15 @@
 		</HBox>
       <Pane prefHeight="363.0" prefWidth="600.0">
          <children>
-            <Label layoutX="75.0" layoutY="40.0" text="Welcome">
+            <Label layoutX="75.0" layoutY="40.0" text="Welcome to HW Crypto Accelerator">
                <font>
                   <Font size="26.0" />
                </font>
             </Label>
-            <GridPane layoutX="82.0" layoutY="91.0" prefHeight="89.0" prefWidth="376.0">
+            <GridPane layoutX="32.0" layoutY="91.0" prefHeight="109.0" prefWidth="486.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="112.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="66.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="348.0" />
               </columnConstraints>
               <rowConstraints>
@@ -59,11 +60,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="User Name:" />
-                  <Label text="Password:" GridPane.rowIndex="1" />
-                  <Button id="signInButton" fx:id="signInButton" mnemonicParsing="false" onAction="#signInActionHandler" text="Sign in" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                  <TextField id="usernameTextField" fx:id="usernameTextfield" promptText="your username" GridPane.columnIndex="1" />
-                  <PasswordField id="passwordTextField" fx:id="passwordTextField" promptText="your password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="usernameLabel" text="User Name:" GridPane.columnIndex="1" />
+                  <Label fx:id="passwordLabel" text="Password:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button id="signInButton" fx:id="signInButton" mnemonicParsing="false" onAction="#signInActionHandler" prefHeight="33.0" prefWidth="90.0" text="Sign in" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <TextField id="usernameTextField" fx:id="usernameTextfield" promptText="your username" GridPane.columnIndex="2" />
+                  <PasswordField id="passwordTextField" fx:id="passwordTextField" promptText="your password" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>

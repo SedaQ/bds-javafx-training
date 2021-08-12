@@ -55,7 +55,6 @@ public class DashboardController {
     @FXML
     private void initialize() {
         GlyphsDude.setIcon(exitMenuitem, FontAwesomeIcon.CLOSE, "1em");
-
     }
 
 

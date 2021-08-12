@@ -23,6 +23,10 @@ import java.util.Optional;
 
 public class MainController {
     @FXML
+    public Label usernameLabel;
+    @FXML
+    public Label passwordLabel;
+    @FXML
     private VBox fpga;
     @FXML
     private MenuBar menuBar;
@@ -43,7 +47,8 @@ public class MainController {
     @FXML
     private void initialize() {
         GlyphsDude.setIcon(signInButton, FontAwesomeIcon.SIGN_IN, "1em");
-
+        GlyphsDude.setIcon(usernameLabel, FontAwesomeIcon.USER, "2em");
+        GlyphsDude.setIcon(passwordLabel, FontAwesomeIcon.USER_SECRET, "2em");
         usernameTextfield.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 handleSignIn();
@@ -87,7 +92,7 @@ public class MainController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("../Dashboard.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
             Stage stage = new Stage();
             stage.setTitle("Demonstrator of HW Crypto Accelerator");
             stage.setScene(scene);

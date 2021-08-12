@@ -26,11 +26,11 @@ public class App extends Application {
 
 		loader.setControllerFactory(initControllerFactory());
 
-		primaryStage.setTitle("FPGA Demo");
+		primaryStage.setTitle("Demonstrator of HW Crypto Accelerator");
 		Scene scene = new Scene(mainStage);
-		String modenaCss = getClass().getResource("/css/modena.css").toExternalForm();
-		scene.getStylesheets().add(modenaCss);
 		setUserAgentStylesheet(STYLESHEET_MODENA);
+		String myStyle = getClass().getResource("/css/myStyle.css").toExternalForm();
+		scene.getStylesheets().add(myStyle);
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
