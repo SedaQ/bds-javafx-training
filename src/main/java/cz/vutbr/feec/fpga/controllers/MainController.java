@@ -75,7 +75,7 @@ public class MainController {
     private void showDashboardWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../fxml/Dashboard.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/cz/vutbr/feec/fpga/fxml/Dashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 600);
             Stage stage = new Stage();
             stage.setTitle("Demonstrator of HW Crypto Accelerator");
