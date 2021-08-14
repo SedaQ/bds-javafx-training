@@ -1,6 +1,7 @@
 package cz.vutbr.feec.fpga.controllers;
 
 import cz.vutbr.feec.fpga.App;
+import cz.vutbr.feec.fpga.exceptions.ExceptionHandler;
 import cz.vutbr.feec.fpga.services.AuthService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -69,7 +70,6 @@ public class MainController {
         } else {
             showInvalidPaswordDialog();
         }
-
     }
 
     private void showDashboardWindow() {
@@ -88,8 +88,8 @@ public class MainController {
             authConfirmDialog();
 
             stage.show();
-        } catch (IOException e) {
-            System.out.println(e);
+        } catch (IOException ex) {
+            ExceptionHandler.handleException(ex);
         }
     }
 
