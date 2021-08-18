@@ -1,5 +1,6 @@
 package cz.vutbr.feec.fpga.controllers;
 
+import cz.vutbr.feec.fpga.App;
 import cz.vutbr.feec.fpga.exceptions.ExceptionHandler;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -66,7 +67,7 @@ public class DashboardController {
     }
 
     private void loadIcons() {
-        Image vutLogoImage = new Image(DashboardController.class.getResourceAsStream("../logos/vut.jpg"));
+        Image vutLogoImage = new Image(App.class.getResourceAsStream("logos/vut.jpg"));
         ImageView vutLogo = new ImageView(vutLogoImage);
         vutLogo.setFitWidth(45);
         vutLogo.setFitHeight(45);
@@ -81,7 +82,7 @@ public class DashboardController {
 
     public void openContentInitialSettings(ActionEvent e) {
         try {
-            BorderPane root = FXMLLoader.load(getClass().getResource("../fxml/InitialSettings.fxml"));
+            BorderPane root = FXMLLoader.load(App.class.getResource("fxml/InitialSettings.fxml"));
             dashboardContent.getChildren().setAll(root);
             initialSettings.setStyle("-fx-background-color: #FFDC00;");
             encryptionDecryption.setStyle("-fx-background-color: #AAAAAA;");
@@ -95,7 +96,7 @@ public class DashboardController {
 
     public void openContentEncryptDecrypt(ActionEvent event) {
         try {
-            BorderPane root = FXMLLoader.load(getClass().getResource("../fxml/EncryptionDecryptionContent.fxml"));
+            BorderPane root = FXMLLoader.load(App.class.getResource("fxml/EncryptionDecryptionContent.fxml"));
             dashboardContent.getChildren().setAll(root);
             initialSettings.setStyle("-fx-background-color: #AAAAAA;");
             encryptionDecryption.setStyle("-fx-background-color: #FFDC00;");
