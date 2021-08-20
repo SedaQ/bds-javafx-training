@@ -14,9 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.DragEvent;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -24,10 +23,17 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class MainController {
+
     @FXML
     public Label usernameLabel;
     @FXML
     public Label passwordLabel;
+    @FXML
+    public Label netcopeLogo;
+    @FXML
+    public Label mvcrLogo;
+    @FXML
+    public Label vutLogo;
     @FXML
     private Button signInButton;
     @FXML
@@ -53,6 +59,30 @@ public class MainController {
                 handleSignIn();
             }
         });
+        initializeLogos();
+    }
+
+    private void initializeLogos() {
+        Image netcopeImage = new Image(App.class.getResourceAsStream("logos/netcope-logo.png"));
+        ImageView netcopeLogoImage = new ImageView(netcopeImage);
+        netcopeLogoImage.setFitHeight(100);
+        netcopeLogoImage.setFitWidth(150);
+        netcopeLogoImage.setPreserveRatio(true);
+        netcopeLogo.setGraphic(netcopeLogoImage);
+
+        Image mvcrImage = new Image(App.class.getResourceAsStream("logos/mvcr-logo.png"));
+        ImageView mvcrLogoImage = new ImageView(mvcrImage);
+        mvcrLogoImage.setFitHeight(85);
+        mvcrLogoImage.setFitWidth(150);
+        mvcrLogoImage.setPreserveRatio(true);
+        mvcrLogo.setGraphic(mvcrLogoImage);
+
+        Image vutImage = new Image(App.class.getResourceAsStream("logos/vut-logo.png"));
+        ImageView vutLogoImage = new ImageView(vutImage);
+        vutLogoImage.setFitHeight(85);
+        vutLogoImage.setFitWidth(150);
+        vutLogoImage.setPreserveRatio(true);
+        vutLogo.setGraphic(vutLogoImage);
     }
 
     public void signInActionHandler(ActionEvent event) {
