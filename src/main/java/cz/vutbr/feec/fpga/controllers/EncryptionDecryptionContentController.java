@@ -1,9 +1,23 @@
 package cz.vutbr.feec.fpga.controllers;
 
+import cz.vutbr.feec.fpga.exceptions.ExceptionHandler;
+import cz.vutbr.feec.fpga.ndk.FpgaServiceImpl;
+import cz.vutbr.feec.service.FPGAWrapperServiceImpl;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.UUID;
+
+import static cz.vutbr.feec.fpga.data.FpgaInitHolder.filesStorageFolder;
 
 public class EncryptionDecryptionContentController {
 
@@ -15,6 +29,8 @@ public class EncryptionDecryptionContentController {
     public Button takeInputDataAndEncrypt;
     @FXML
     public Button takeInputDataAndDecrypt;
+    @FXML
+    public TextArea logTextArea;
 
     @FXML
     private void initialize() {
@@ -37,15 +53,55 @@ public class EncryptionDecryptionContentController {
                 Dragboard db = event.getDragboard();
                 boolean success = false;
                 if (db.hasFiles()) {
-                    textAreaEncryptDecryptInput.setText(db.getFiles().toString());
+                    textAreaEncryptDecryptInput.setText(db.getFiles().get(0).toString());
                     success = true;
                 }
                 /* let the source know whether the string was successfully
                  * transferred and used */
                 event.setDropCompleted(success);
-
                 event.consume();
             }
         });
+    }
+
+    public void handleAESEncryption(ActionEvent event) {
+        try {
+            logTextArea.setText("");
+            Instant start = Instant.now();
+            byte[] fileToEncrypt = Files.readAllBytes(Paths.get(textAreaEncryptDecryptInput.getText()));
+            FPGAWrapperServiceImpl fpgaWrapperService = FpgaServiceImpl.getFpgaWrapperService();
+            byte[] encryptedFile = fpgaWrapperService.encryptAES(InitSettingsController.ndkPointer, fileToEncrypt);
+            Instant end = Instant.now();
+
+            Path resultingPath = filesStorageFolder.resolve("aes-encryption_" + UUID.randomUUID());
+            Files.write(resultingPath, encryptedFile);
+
+            textAreaEncryptDecryptOutput.setText(resultingPath.toAbsolutePath().toString());
+            logTextArea.setText("Encryption operation is successful (file size (in bytes): " + encryptedFile.length + ", time of op.: " + Duration.between(end, start).toMillis() + " ms");
+        } catch (IOException | NullPointerException io) {
+            logTextArea.setText("Encryption operation is not successful");
+            ExceptionHandler.handleException(io);
+        }
+    }
+
+    public void handleAESDecryption(ActionEvent event) {
+        try {
+            logTextArea.setText("");
+            Instant start = Instant.now();
+            byte[] fileToDecrypt = Files.readAllBytes(Paths.get(textAreaEncryptDecryptOutput.getText()));
+            FPGAWrapperServiceImpl fpgaWrapperService = FpgaServiceImpl.getFpgaWrapperService();
+            byte[] decryptedFile = fpgaWrapperService.decryptAES(InitSettingsController.ndkPointer, fileToDecrypt);
+            Instant end = Instant.now();
+
+            Path resultingPath = filesStorageFolder.resolve("aes-decryption" + UUID.randomUUID());
+            Files.write(resultingPath, decryptedFile);
+
+            textAreaEncryptDecryptOutput.setText(resultingPath.toAbsolutePath().toString());
+            logTextArea.setText("Decryption operation is successful (file size (in bytes): " + decryptedFile.length + ", time of op.: " + Duration.between(end, start).toMillis() + " ms");
+
+        } catch (IOException | NullPointerException io) {
+            logTextArea.setText("Decryption operation is not successful");
+            ExceptionHandler.handleException(io);
+        }
     }
 }

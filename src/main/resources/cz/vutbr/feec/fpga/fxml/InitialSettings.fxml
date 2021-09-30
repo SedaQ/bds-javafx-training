@@ -1,42 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="500.0" prefWidth="645.0">
+<?import javafx.scene.control.TextArea?>
+<BorderPane prefHeight="500.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vutbr.feec.fpga.controllers.InitSettingsController">
     <children>
-        <Pane prefHeight="375.0" prefWidth="447.0">
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="chooseFPGATextField" layoutX="185.0" layoutY="51.0"
-                           promptText="choose fpga" text="choose fpga"/>
-                <ButtonBar fx:id="chooseCryptoModuleButtonBar" layoutY="114.0"
-                           prefHeight="81.0"
-                           prefWidth="446.0">
+                <ButtonBar fx:id="chooseCryptoModuleButtonBar" layoutX="4.0" layoutY="52.0" prefHeight="81.0" prefWidth="446.0">
                     <buttons>
-                        <Button fx:id="initAESModule" minHeight="60.0"
-                                mnemonicParsing="false"
-                                text="Init AES" wrapText="true"/>
-                        <Button fx:id="initHashFunctionModule" minHeight="60.0"
-                                mnemonicParsing="false" text="Init Hash Function"
-                                wrapText="true"/>
-                        <Button fx:id="initEdDSAModule" minHeight="60.0"
-                                mnemonicParsing="false"
-                                text="Init EdDSA" wrapText="true"/>
-                        <Button fx:id="initDilithiumModule" minHeight="60.0"
-                                mnemonicParsing="false" text="Init Dilithium"
-                                wrapText="true"/>
-                        <Button fx:id="initCustomModule" minHeight="60.0"
-                                mnemonicParsing="false" text="Init Custom Module"
-                                wrapText="true"/>
+                        <Button fx:id="initAESModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitAES" text="Init AES" wrapText="true" />
+                        <Button fx:id="initHashFunctionModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitHashFunction" text="Init Hash Function" wrapText="true" />
+                        <Button fx:id="initEdDSAModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitEdDSA" text="Init EdDSA" wrapText="true" />
+                        <Button fx:id="initDilithiumModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitDilithium" text="Init Dilithium" wrapText="true" />
+                        <Button fx:id="initCustomModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitCustomModule" text="Init Custom Module" wrapText="true" />
                     </buttons>
                 </ButtonBar>
-                <Button fx:id="chooseFpgaButton" layoutX="30.0" layoutY="51.0"
-                        mnemonicParsing="false" text="Choose FPGA"/>
+                <TextArea fx:id="logTextArea" promptText="App log" layoutX="29.0" layoutY="212.0" prefHeight="94.0" prefWidth="412.0" />
             </children>
         </Pane>
     </children>

@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 public class DashboardController {
+    
     @FXML
     public Button initialSettings;
     @FXML
@@ -49,6 +50,8 @@ public class DashboardController {
     public Label headerLogo2;
     @FXML
     public Label headerLogo3;
+    @FXML
+    public TextArea logTextArea;
 
 
     public DashboardController() {
@@ -64,16 +67,26 @@ public class DashboardController {
         signingDilithium.setStyle("-fx-background-color: #AAAAAA;");
 
         loadIcons();
+
+//        openContentInitialSettings(null);
     }
 
     private void loadIcons() {
-        Image vutLogoImage = new Image(App.class.getResourceAsStream("logos/vut.jpg"));
+        Image vutLogoImage = new Image(App.class.getResourceAsStream("logos/vut-logo-eng.png"));
         ImageView vutLogo = new ImageView(vutLogoImage);
-        vutLogo.setFitWidth(45);
-        vutLogo.setFitHeight(45);
+        vutLogo.setFitWidth(150);
+        vutLogo.setFitHeight(50);
         headerLogo1.setGraphic(vutLogo);
-        headerLogo2.setGraphic(vutLogo);
-        headerLogo3.setGraphic(vutLogo);
+        Image netcopeImage = new Image(App.class.getResourceAsStream("logos/netcope-logo.png"));
+        ImageView netcopeLogo = new ImageView(netcopeImage);
+        netcopeLogo.setFitWidth(150);
+        netcopeLogo.setFitHeight(50);
+        headerLogo2.setGraphic(netcopeLogo);
+        Image mvcrImage = new Image(App.class.getResourceAsStream("logos/mvcr-logo.png"));
+        ImageView mvcrLogo = new ImageView(mvcrImage);
+        mvcrLogo.setFitWidth(150);
+        mvcrLogo.setFitHeight(50);
+        headerLogo3.setGraphic(mvcrLogo);
     }
 
     public void handleExitMenuItem(ActionEvent event) {
@@ -118,4 +131,5 @@ public class DashboardController {
     public void openContentSigninDilithium(ActionEvent event) {
 
     }
+
 }

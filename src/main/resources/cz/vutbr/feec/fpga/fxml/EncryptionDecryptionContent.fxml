@@ -10,9 +10,10 @@
         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
                 <TextArea fx:id="textAreaEncryptDecryptInput" layoutX="84.0" layoutY="50.0" prefHeight="147.0" prefWidth="477.0" promptText="Drag and Drop or Paste Data Here" />
-                <TextArea fx:id="textAreaEncryptDecryptOutput" layoutX="85.0" layoutY="312.0" prefHeight="133.0" prefWidth="476.0" promptText="Output from FPGA" />
-                <Button fx:id="takeInputDataAndEncrypt" layoutX="97.0" layoutY="250.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="191.0" text="Take input data and encrypt" />
-                <Button fx:id="takeInputDataAndDecrypt" layoutX="355.0" layoutY="250.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Take input data and decrypt" />
+                <TextArea fx:id="textAreaEncryptDecryptOutput" layoutX="85.0" layoutY="312.0" prefHeight="35.0" prefWidth="476.0" promptText="Output from FPGA" />
+                <Button fx:id="takeInputDataAndEncrypt" layoutX="97.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleAESEncryption" prefHeight="25.0" prefWidth="191.0" text="Encryption" />
+                <Button fx:id="takeInputDataAndDecrypt" layoutX="355.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleAESDecryption" prefHeight="25.0" prefWidth="186.0" text="Decryption" />
+                <TextArea fx:id="logTextArea" promptText="App log" layoutX="117.0" layoutY="375.0" prefHeight="94.0" prefWidth="412.0" />
             </children>
         </Pane>
     </center>

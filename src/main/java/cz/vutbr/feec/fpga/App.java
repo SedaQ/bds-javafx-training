@@ -1,7 +1,10 @@
 package cz.vutbr.feec.fpga;
 
+import com.sun.jna.Pointer;
 import cz.vutbr.feec.fpga.controllers.MainController;
 import cz.vutbr.feec.fpga.exceptions.ExceptionHandler;
+import cz.vutbr.feec.fpga.ndk.NdkPointer;
+import cz.vutbr.feec.service.FPGAWrapperServiceImpl;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +37,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            NdkPointer.initializeNdkAndGetPointer();
             loader = new FXMLLoader(getClass().getResource("App.fxml"));
             mainStage = loader.load();
 
