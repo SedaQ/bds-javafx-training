@@ -29,6 +29,8 @@ public class InitSettingsController {
     public void handleInitAES(ActionEvent event) {
         logTextArea.setText("AES function initialized");
 
+        //1
+        //2
         ndkPointer = FpgaServiceImpl.getFpgaWrapperService().initAES(0);
         FpgaInitHolder.isAesInitialized = true;
     }

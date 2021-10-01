@@ -8,10 +8,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.io.File;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.Instant;
@@ -31,6 +34,12 @@ public class EncryptionDecryptionContentController {
     public Button takeInputDataAndDecrypt;
     @FXML
     public TextArea logTextArea;
+    @FXML
+    public TextArea textAreaEncryptionKey;
+    @FXML
+    public Button chooseEncryptionKey;
+    @FXML
+    public Button chooseInputFile;
 
     @FXML
     private void initialize() {
@@ -62,6 +71,20 @@ public class EncryptionDecryptionContentController {
                 event.consume();
             }
         });
+
+        FileChooser fileChooser = new FileChooser();
+
+        chooseEncryptionKey.setOnAction(e -> {
+            File selectedFile = fileChooser.showOpenDialog(chooseEncryptionKey.getScene().getWindow());
+            textAreaEncryptionKey.setText(selectedFile.getAbsolutePath());
+
+        });
+
+        chooseInputFile.setOnAction(e -> {
+            File selectedFile = fileChooser.showOpenDialog(chooseEncryptionKey.getScene().getWindow());
+            textAreaEncryptDecryptInput.setText(selectedFile.getAbsolutePath());
+        });
+
     }
 
     public void handleAESEncryption(ActionEvent event) {
