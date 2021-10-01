@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -93,7 +92,7 @@ public class EncryptionDecryptionContentController {
             Instant start = Instant.now();
             byte[] fileToEncrypt = Files.readAllBytes(Paths.get(textAreaEncryptDecryptInput.getText()));
             FPGAWrapperServiceImpl fpgaWrapperService = FpgaServiceImpl.getFpgaWrapperService();
-            byte[] encryptedFile = fpgaWrapperService.encryptAES(InitSettingsController.ndkPointer, fileToEncrypt);
+            byte[] encryptedFile = fpgaWrapperService.encryptAES(InitSettingsController.ndkPointerInitAesEnc, fileToEncrypt);
             Instant end = Instant.now();
 
             Path resultingPath = filesStorageFolder.resolve("aes-encryption_" + UUID.randomUUID());
@@ -113,7 +112,7 @@ public class EncryptionDecryptionContentController {
             Instant start = Instant.now();
             byte[] fileToDecrypt = Files.readAllBytes(Paths.get(textAreaEncryptDecryptOutput.getText()));
             FPGAWrapperServiceImpl fpgaWrapperService = FpgaServiceImpl.getFpgaWrapperService();
-            byte[] decryptedFile = fpgaWrapperService.decryptAES(InitSettingsController.ndkPointer, fileToDecrypt);
+            byte[] decryptedFile = fpgaWrapperService.decryptAES(InitSettingsController.ndkPointerInitAesEnc, fileToDecrypt);
             Instant end = Instant.now();
 
             Path resultingPath = filesStorageFolder.resolve("aes-decryption" + UUID.randomUUID());

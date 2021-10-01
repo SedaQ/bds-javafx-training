@@ -10,7 +10,7 @@ public class NdkPointer {
         if (ndkInitPointer == null) {
             synchronized (NdkPointer.class) {
                 if (ndkInitPointer == null) {
-//                    ndkInitPointer = FpgaServiceImpl.getFpgaWrapperService().initNdk();
+                    ndkInitPointer = FpgaServiceImpl.getFpgaWrapperService().initNdk();
                 }
             }
         }

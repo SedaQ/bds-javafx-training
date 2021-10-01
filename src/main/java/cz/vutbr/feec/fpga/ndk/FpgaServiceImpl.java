@@ -10,7 +10,7 @@ public class FpgaServiceImpl {
         if (fpgaWrapperService == null) {
             synchronized (FpgaServiceImpl.class) {
                 if (fpgaWrapperService == null) {
-//                    fpgaWrapperService = new FPGAWrapperServiceImpl();
+                    fpgaWrapperService = new FPGAWrapperServiceImpl();
                 }
             }
         }

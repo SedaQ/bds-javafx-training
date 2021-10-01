@@ -3,7 +3,6 @@ package cz.vutbr.feec.fpga.controllers;
 import com.sun.jna.Pointer;
 import cz.vutbr.feec.fpga.data.FpgaInitHolder;
 import cz.vutbr.feec.fpga.ndk.FpgaServiceImpl;
-import cz.vutbr.feec.fpga.ndk.NdkPointer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +10,8 @@ import javafx.scene.control.TextArea;
 
 public class InitSettingsController {
 
-    public static Pointer ndkPointer;
+    public static Pointer ndkPointerInitAesEnc;
+    public static Pointer getNdkPointerInitAesDec;
 
     @FXML
     public Button initAESModule;
@@ -31,7 +31,8 @@ public class InitSettingsController {
 
         //1
         //2
-        ndkPointer = FpgaServiceImpl.getFpgaWrapperService().initAES(0);
+        ndkPointerInitAesEnc = FpgaServiceImpl.getFpgaWrapperService().initAESEncryption(0);
+        getNdkPointerInitAesDec = FpgaServiceImpl.getFpgaWrapperService().initAESDecryption(1);
         FpgaInitHolder.isAesInitialized = true;
     }
 
@@ -41,7 +42,7 @@ public class InitSettingsController {
     }
 
     public void handleInitEdDSA(ActionEvent event) {
-        ndkPointer = FpgaServiceImpl.getFpgaWrapperService().initEDDSA(0);
+        ndkPointerInitAesEnc = FpgaServiceImpl.getFpgaWrapperService().initEDDSA(0);
 
         logTextArea.setText("EdDSA initialized");
         FpgaInitHolder.isEdDsaInitialized = true;
