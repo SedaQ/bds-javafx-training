@@ -2,25 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 
-<?import javafx.scene.control.TextArea?>
-<BorderPane prefHeight="500.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vutbr.feec.fpga.controllers.InitSettingsController">
+<Pane prefHeight="500.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vutbr.feec.fpga.controllers.InitSettingsController">
     <children>
-        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <ButtonBar fx:id="chooseCryptoModuleButtonBar" layoutX="4.0" layoutY="52.0" prefHeight="81.0" prefWidth="446.0">
-                    <buttons>
-                        <Button fx:id="initAESModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitAES" text="Init AES" wrapText="true" />
-                        <Button fx:id="initHashFunctionModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitHashFunction" text="Init Hash Function" wrapText="true" />
-                        <Button fx:id="initEdDSAModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitEdDSA" text="Init EdDSA" wrapText="true" />
-                        <Button fx:id="initDilithiumModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitDilithium" text="Init Dilithium" wrapText="true" />
-                        <Button fx:id="initCustomModule" minHeight="60.0" mnemonicParsing="false" onAction="#handleInitCustomModule" text="Init Custom Module" wrapText="true" />
-                    </buttons>
-                </ButtonBar>
-                <TextArea fx:id="logTextArea" promptText="App log" layoutX="29.0" layoutY="212.0" prefHeight="94.0" prefWidth="412.0" />
-            </children>
-        </Pane>
+        <ButtonBar fx:id="chooseCryptoModuleButtonBar" layoutX="4.0" layoutY="52.0" prefHeight="79.0" prefWidth="470.0" />
+        <Button layoutX="262.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleInitFunction" text="Confirm and Load" />
+        <TextArea fx:id="logTextArea" layoutX="117.0" layoutY="357.0" prefHeight="94.0" prefWidth="412.0" promptText="App log" />
+        <ComboBox fx:id="comboboxInitFunctions" layoutX="92.0" layoutY="131.0" prefHeight="28.0" prefWidth="462.0" />
     </children>
-</BorderPane>
+</Pane>

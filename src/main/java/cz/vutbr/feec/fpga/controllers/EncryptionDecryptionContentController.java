@@ -39,6 +39,8 @@ public class EncryptionDecryptionContentController {
     public Button chooseEncryptionKey;
     @FXML
     public Button chooseInputFile;
+    @FXML
+    public Button loadEncryptionKey;
 
     @FXML
     private void initialize() {
@@ -125,5 +127,9 @@ public class EncryptionDecryptionContentController {
             logTextArea.setText("Decryption operation is not successful");
             ExceptionHandler.handleException(io);
         }
+    }
+
+    public void handleLoadEncryptionKey(ActionEvent event) {
+        logTextArea.setText("Encryption key loaded. (not implemented yet..)");
     }
 }

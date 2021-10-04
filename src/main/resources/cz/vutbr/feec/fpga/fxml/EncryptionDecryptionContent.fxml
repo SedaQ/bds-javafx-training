@@ -5,19 +5,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane prefHeight="500.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vutbr.feec.fpga.controllers.EncryptionDecryptionContentController">
-    <center>
-        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <TextArea fx:id="textAreaEncryptDecryptInput" layoutX="84.0" layoutY="151.0" prefHeight="41.0" prefWidth="477.0" promptText="Drag and Drop or Paste Data Here" />
-                <TextArea fx:id="textAreaEncryptDecryptOutput" layoutX="85.0" layoutY="312.0" prefHeight="35.0" prefWidth="476.0" promptText="Output from FPGA" />
-                <Button fx:id="takeInputDataAndEncrypt" layoutX="96.0" layoutY="263.0" mnemonicParsing="false" onAction="#handleAESEncryption" prefHeight="25.0" prefWidth="191.0" text="Encryption" />
-                <Button fx:id="takeInputDataAndDecrypt" layoutX="358.0" layoutY="263.0" mnemonicParsing="false" onAction="#handleAESDecryption" prefHeight="25.0" prefWidth="186.0" text="Decryption" />
-                <TextArea fx:id="logTextArea" layoutX="117.0" layoutY="375.0" prefHeight="94.0" prefWidth="412.0" promptText="App log" />
+<Pane prefHeight="500.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vutbr.feec.fpga.controllers.EncryptionDecryptionContentController">
+    <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <children>
+            <TextArea fx:id="textAreaEncryptDecryptInput" layoutX="84.0" layoutY="151.0" prefHeight="41.0" prefWidth="477.0" promptText="Drag and Drop or Paste Data Here" />
+            <TextArea fx:id="textAreaEncryptDecryptOutput" layoutX="85.0" layoutY="312.0" prefHeight="35.0" prefWidth="476.0" promptText="Output from FPGA" />
+            <Button fx:id="takeInputDataAndEncrypt" layoutX="96.0" layoutY="263.0" mnemonicParsing="false" onAction="#handleAESEncryption" prefHeight="25.0" prefWidth="191.0" text="Encryption" />
+            <Button fx:id="takeInputDataAndDecrypt" layoutX="358.0" layoutY="263.0" mnemonicParsing="false" onAction="#handleAESDecryption" prefHeight="25.0" prefWidth="186.0" text="Decryption" />
+            <TextArea fx:id="logTextArea" layoutX="117.0" layoutY="375.0" prefHeight="94.0" prefWidth="412.0" promptText="App log" />
             <Button fx:id="chooseInputFile" layoutX="265.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Choose File" />
             <TextArea fx:id="textAreaEncryptionKey" layoutX="84.0" layoutY="39.0" prefHeight="31.0" prefWidth="477.0" promptText="Add encryption key" />
-            <Button fx:id="chooseEncryptionKey" layoutX="254.0" layoutY="93.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Choose encryption key" />
-            </children>
-        </Pane>
-    </center>
-</BorderPane>
+        </children>
+    </Pane>
+    <Button fx:id="chooseEncryptionKey" layoutX="135.0" layoutY="88.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Choose encryption key" />
+    <Button fx:id="loadEncryptionKey" layoutX="339.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleLoadEncryptionKey" prefHeight="25.0" prefWidth="145.0" text="Load Encryption Key" />
+</Pane>

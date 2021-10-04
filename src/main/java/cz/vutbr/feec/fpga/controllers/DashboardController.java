@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 public class DashboardController {
     
@@ -43,7 +44,7 @@ public class DashboardController {
     @FXML
     public MenuItem exitMenuItem;
     @FXML
-    public BorderPane dashboardContent;
+    public Pane dashboardContent;
     @FXML
     public Label headerLogo1;
     @FXML
@@ -95,7 +96,7 @@ public class DashboardController {
 
     public void openContentInitialSettings(ActionEvent e) {
         try {
-            BorderPane root = FXMLLoader.load(App.class.getResource("fxml/InitialSettings.fxml"));
+            Pane root = FXMLLoader.load(App.class.getResource("fxml/InitialSettings.fxml"));
             dashboardContent.getChildren().setAll(root);
             initialSettings.setStyle("-fx-background-color: #FFDC00;");
             encryptionDecryption.setStyle("-fx-background-color: #AAAAAA;");
@@ -109,7 +110,7 @@ public class DashboardController {
 
     public void openContentEncryptDecrypt(ActionEvent event) {
         try {
-            BorderPane root = FXMLLoader.load(App.class.getResource("fxml/EncryptionDecryptionContent.fxml"));
+            Pane root = FXMLLoader.load(App.class.getResource("fxml/EncryptionDecryptionContent.fxml"));
             dashboardContent.getChildren().setAll(root);
             initialSettings.setStyle("-fx-background-color: #AAAAAA;");
             encryptionDecryption.setStyle("-fx-background-color: #FFDC00;");
