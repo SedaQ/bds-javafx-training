@@ -9,15 +9,10 @@ public class AuthService {
     }
 
     public boolean authenticate(String username, String password) {
-        if (username == null || username.isEmpty()) {
-            return false;
-        } else if (password == null || password.isEmpty()) {
+        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             return false;
         }
-        if (username.equals(this.USERNAME_INITIAL_AUTH) && password.equals(this.PASSWORD_INITIAL_AUTH)) {
-            return true;
-        } else {
-            return false;
-        }
+        return username.equals(USERNAME_INITIAL_AUTH) && password.equals(PASSWORD_INITIAL_AUTH);
     }
+
 }
