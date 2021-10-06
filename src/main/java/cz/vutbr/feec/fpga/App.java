@@ -1,24 +1,12 @@
 package cz.vutbr.feec.fpga;
 
-import com.sun.jna.Pointer;
 import cz.vutbr.feec.fpga.controllers.MainController;
 import cz.vutbr.feec.fpga.exceptions.ExceptionHandler;
-import cz.vutbr.feec.fpga.ndk.NdkPointer;
-import cz.vutbr.feec.service.FPGAWrapperServiceImpl;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.*;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -37,7 +25,6 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            NdkPointer.initializeNdkAndGetPointer();
             loader = new FXMLLoader(getClass().getResource("App.fxml"));
             mainStage = loader.load();
 

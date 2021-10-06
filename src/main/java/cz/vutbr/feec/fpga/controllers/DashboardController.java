@@ -26,22 +26,6 @@ public class DashboardController {
     @FXML
     public Button signingDilithium;
     @FXML
-    public ButtonBar chooseCryptoModuleButtonBar;
-    @FXML
-    public Button initAESModule;
-    @FXML
-    public Button initHashFunctionModule;
-    @FXML
-    public Button initEdDSAModule;
-    @FXML
-    public Button initDilithiumModule;
-    @FXML
-    public Button initCustomModule;
-    @FXML
-    public TextField chooseFPGATextField;
-    @FXML
-    public Button chooseFpgaButton;
-    @FXML
     public MenuItem exitMenuItem;
     @FXML
     public Pane dashboardContent;

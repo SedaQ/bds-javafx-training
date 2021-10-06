@@ -1,8 +1,9 @@
 package cz.vutbr.feec.fpga.controllers;
 
-import com.sun.jna.Pointer;
 import cz.vutbr.feec.fpga.data.FpgaInitHolder;
+import cz.vutbr.feec.fpga.enums.EncrypytionDecryptionDevices;
 import cz.vutbr.feec.fpga.enums.SupportedFunctions;
+import cz.vutbr.feec.fpga.ndk.FpgaServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonBar;
@@ -10,9 +11,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
 public class InitSettingsController {
-
-    public static Pointer ndkPointerInitAesEnc;
-    public static Pointer getNdkPointerInitAesDec;
 
     @FXML
     public TextArea logTextArea;
@@ -38,8 +36,11 @@ public class InitSettingsController {
     public void handleInitFunction(ActionEvent event) {
         if (comboboxInitFunctions.getSelectionModel().getSelectedItem().equals(SupportedFunctions.AES.getDescription())) {
             logTextArea.setText("AES function initialized");
-//            ndkPointerInitAesEnc = FpgaServiceImpl.getFpgaWrapperService().initAESEncryption(0);
-//            getNdkPointerInitAesDec = FpgaServiceImpl.getFpgaWrapperService().initAESDecryption(1);
+            FpgaServiceImpl.getFpgaWrapperService().initAESEncryption(EncrypytionDecryptionDevices.AES_ENCRYPT_DEVICE);
+            FpgaServiceImpl.getFpgaWrapperService().writeIVAES(new int[]{1, 2, 3}, EncrypytionDecryptionDevices.AES_ENCRYPT_DEVICE);
+
+            FpgaServiceImpl.getFpgaWrapperService().initAESDecryption(EncrypytionDecryptionDevices.AES_DECRYPT_DEVICE);
+            FpgaServiceImpl.getFpgaWrapperService().writeIVAES(new int[]{1, 2, 3}, EncrypytionDecryptionDevices.AES_DECRYPT_DEVICE);
             FpgaInitHolder.isAesInitialized = true;
         } else if (comboboxInitFunctions.getSelectionModel().getSelectedItem().equals(SupportedFunctions.HASH_FUNCTION.getDescription())) {
             logTextArea.setText("Hash function initialized");

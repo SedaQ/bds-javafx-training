@@ -77,7 +77,7 @@ public class MainController {
         mvcrLogoImage.setPreserveRatio(true);
         mvcrLogo.setGraphic(mvcrLogoImage);
 
-        Image vutImage = new Image(App.class.getResourceAsStream("logos/vut-logo.png"));
+        Image vutImage = new Image(App.class.getResourceAsStream("logos/vut-logo-eng.png"));
         ImageView vutLogoImage = new ImageView(vutImage);
         vutLogoImage.setFitHeight(85);
         vutLogoImage.setFitWidth(150);

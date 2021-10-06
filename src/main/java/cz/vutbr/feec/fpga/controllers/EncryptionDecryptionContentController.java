@@ -1,5 +1,6 @@
 package cz.vutbr.feec.fpga.controllers;
 
+import cz.vutbr.feec.fpga.enums.EncrypytionDecryptionDevices;
 import cz.vutbr.feec.fpga.exceptions.ExceptionHandler;
 import cz.vutbr.feec.fpga.ndk.FpgaServiceImpl;
 import cz.vutbr.feec.service.FPGAWrapperServiceImpl;
@@ -93,8 +94,7 @@ public class EncryptionDecryptionContentController {
             logTextArea.setText("");
             Instant start = Instant.now();
             byte[] fileToEncrypt = Files.readAllBytes(Paths.get(textAreaEncryptDecryptInput.getText()));
-            FPGAWrapperServiceImpl fpgaWrapperService = FpgaServiceImpl.getFpgaWrapperService();
-            byte[] encryptedFile = fpgaWrapperService.encryptAES(InitSettingsController.ndkPointerInitAesEnc, fileToEncrypt);
+            byte[] encryptedFile = FpgaServiceImpl.getFpgaWrapperService().encryptAES(fileToEncrypt, EncrypytionDecryptionDevices.AES_ENCRYPT_DEVICE);
             Instant end = Instant.now();
 
             Path resultingPath = filesStorageFolder.resolve("aes-encryption_" + UUID.randomUUID());
@@ -113,8 +113,7 @@ public class EncryptionDecryptionContentController {
             logTextArea.setText("");
             Instant start = Instant.now();
             byte[] fileToDecrypt = Files.readAllBytes(Paths.get(textAreaEncryptDecryptOutput.getText()));
-            FPGAWrapperServiceImpl fpgaWrapperService = FpgaServiceImpl.getFpgaWrapperService();
-            byte[] decryptedFile = fpgaWrapperService.decryptAES(InitSettingsController.ndkPointerInitAesEnc, fileToDecrypt);
+            byte[] decryptedFile = FpgaServiceImpl.getFpgaWrapperService().decryptAES(fileToDecrypt, EncrypytionDecryptionDevices.AES_DECRYPT_DEVICE);
             Instant end = Instant.now();
 
             Path resultingPath = filesStorageFolder.resolve("aes-decryption" + UUID.randomUUID());
