@@ -11,6 +11,6 @@ public class FpgaInitHolder {
     public static boolean isDilithiumInitialized;
     public static boolean isCustomModuleInitialized;
 
-    public static Path filesStorageFolder = Paths.get("C:\\School\\workspace\\data");
+    public static Path filesStorageFolder = Paths.get("/home/server/fpga/data/");
 
 }
