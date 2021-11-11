@@ -2,8 +2,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cz.vutbr.feec</groupId>
-    <artifactId>fpga-gui-demo</artifactId>
+    <groupId>org.but.feec</groupId>
+    <artifactId>bds-javafx-training</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -14,12 +14,6 @@
     </properties>
 
     <dependencies>
-        <!-- required dependency for java-fpga-wrapper library that is using C code to communicate with FPGA card -->
-        <dependency>
-            <groupId>cz.vutbr.feec</groupId>
-            <artifactId>fpga-wrapper-java</artifactId>
-            <version>1.0.0</version>
-        </dependency>
         <dependency>
             <groupId>de.jensd</groupId>
             <artifactId>fontawesomefx</artifactId>
@@ -55,6 +49,35 @@
             <artifactId>javafx-graphics</artifactId>
             <version>${javafx.version}</version>
             <classifier>linux</classifier>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.24</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <!-- for BCrypt -->
+        <dependency>
+            <groupId>at.favre.lib</groupId>
+            <artifactId>bcrypt</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+        <!-- Logging with SLF4J -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.6</version>
         </dependency>
     </dependencies>
 
@@ -92,7 +115,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>cz.vutbr.feec.fpga.Main</mainClass>
+                                    <mainClass>org.but.feec.javafx.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
