@@ -103,7 +103,7 @@ public class LoginController {
     private void showDashboardWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(App.class.getResource("fxml/Dashboard.fxml"));
+            fxmlLoader.setLocation(App.class.getResource("fxml/Persons.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 600);
             Stage stage = new Stage();
             stage.setTitle("Demonstrator of HW Crypto Accelerator");
