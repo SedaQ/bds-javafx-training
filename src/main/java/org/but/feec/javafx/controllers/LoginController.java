@@ -23,11 +23,15 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Optional;
 
 public class LoginController {
+
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @FXML
     public Label usernameLabel;
@@ -69,6 +73,8 @@ public class LoginController {
         initializeLogos();
         initializeServices();
         initializeValidations();
+
+        logger.info("LoginController initialized");
     }
 
     private void initializeValidations() {

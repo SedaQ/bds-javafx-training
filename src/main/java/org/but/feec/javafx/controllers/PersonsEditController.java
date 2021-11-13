@@ -5,12 +5,10 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.but.feec.javafx.api.PersonBasicView;
@@ -19,11 +17,15 @@ import org.but.feec.javafx.data.PersonRepository;
 import org.but.feec.javafx.services.PersonService;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
 
 public class PersonsEditController {
+
+    private static final Logger logger = LoggerFactory.getLogger(PersonsEditController.class);
 
     @FXML
     public Button editPersonButton;
@@ -65,6 +67,8 @@ public class PersonsEditController {
         editPersonButton.disableProperty().bind(validation.invalidProperty());
 
         loadPersonsData();
+
+        logger.info("PersonsEditController initialized");
     }
 
     /**

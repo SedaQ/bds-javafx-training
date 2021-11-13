@@ -4,8 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.but.feec.javafx.api.PersonDetailView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PersonsDetailViewController {
+
+    private static final Logger logger = LoggerFactory.getLogger(PersonsDetailViewController.class);
 
     @FXML
     private TextField idTextField;
@@ -50,6 +54,8 @@ public class PersonsDetailViewController {
         streetTextField.setEditable(false);
 
         loadPersonsData();
+
+        logger.info("PersonsDetailViewController initialized");
     }
 
     private void loadPersonsData() {

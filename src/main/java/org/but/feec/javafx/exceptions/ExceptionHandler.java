@@ -2,6 +2,9 @@ package org.but.feec.javafx.exceptions;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
+import org.but.feec.javafx.controllers.LoginController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,7 +12,11 @@ import java.io.StringWriter;
 
 public class ExceptionHandler {
 
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
     public static void handleException(Exception ex) {
+        logger.error(ex.getMessage(), ex);
+
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setWidth(700);
         alert.setHeight(700);

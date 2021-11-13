@@ -15,10 +15,15 @@ import org.but.feec.javafx.data.PersonRepository;
 import org.but.feec.javafx.services.PersonService;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
 public class PersonCreateController {
+
+    private static final Logger logger = LoggerFactory.getLogger(PersonCreateController.class);
+
     @FXML
     public Button newPersonCreatePerson;
     @FXML
@@ -53,6 +58,8 @@ public class PersonCreateController {
         validation.registerValidator(newPersonPwd, Validator.createEmptyValidator("The password must not be empty."));
 
         newPersonCreatePerson.disableProperty().bind(validation.invalidProperty());
+
+        logger.info("PersonCreateController initialized");
     }
 
     @FXML

@@ -17,11 +17,15 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.but.feec.javafx.services.PersonService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.List;
 
 public class PersonsController {
+
+    private static final Logger logger = LoggerFactory.getLogger(PersonsController.class);
 
     @FXML
     public Button addPersonButton;
@@ -71,6 +75,8 @@ public class PersonsController {
 
         initializeTableViewSelection();
         loadIcons();
+
+        logger.info("PersonsController initialized");
     }
 
     private void initializeTableViewSelection() {
