@@ -18,9 +18,7 @@ import org.controlsfx.validation.Validator;
 
 import java.util.Optional;
 
-
-public class PersonsCreateController {
-
+public class PersonCreateController {
     @FXML
     public Button newPersonCreatePerson;
     @FXML
@@ -58,7 +56,7 @@ public class PersonsCreateController {
     }
 
     @FXML
-    void createNewPerson(ActionEvent event) {
+    void handleCreateNewPerson(ActionEvent event) {
         // can be written easier, its just for better explanation here on so many lines
         String email = newPersonEmail.getText();
         String firstName = newPersonFirstName.getText();

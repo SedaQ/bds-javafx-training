@@ -3,10 +3,14 @@ package org.but.feec.javafx.services;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.but.feec.javafx.api.PersonBasicView;
 import org.but.feec.javafx.api.PersonCreateView;
+import org.but.feec.javafx.api.PersonEditView;
 import org.but.feec.javafx.data.PersonRepository;
 
 import java.util.List;
 
+/**
+ * Class representing business logic on top of the Persons
+ */
 public class PersonService {
 
     private PersonRepository personRepository;
@@ -26,6 +30,10 @@ public class PersonService {
         personCreateView.setPwd(hashedPassword);
 
         personRepository.createPerson(personCreateView);
+    }
+
+    public void editPerson(PersonEditView personEditView) {
+        personRepository.editPerson(personEditView);
     }
 
     /**

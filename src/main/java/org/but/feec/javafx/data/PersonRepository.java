@@ -3,6 +3,7 @@ package org.but.feec.javafx.data;
 import org.but.feec.javafx.api.PersonAuthView;
 import org.but.feec.javafx.api.PersonBasicView;
 import org.but.feec.javafx.api.PersonCreateView;
+import org.but.feec.javafx.api.PersonEditView;
 import org.but.feec.javafx.config.DataSourceConfig;
 import org.but.feec.javafx.exceptions.DataAccessException;
 
@@ -65,7 +66,28 @@ public class PersonRepository {
             preparedStatement.setString(4, String.valueOf(personCreateView.getPwd()));
             preparedStatement.setString(5, personCreateView.getSurname());
 
-            System.out.println("Person is created...");
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new DataAccessException("Creating person failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            throw new DataAccessException("Creating person failed operation on the database failed.");
+        }
+    }
+
+    public void editPerson(PersonEditView personEditView) {
+        String insertPersonSQL = "UPDATE bds.person p SET email = ?, first_name = ?, nickname = ?, surname = ? WHERE p.id_person = ?";
+        try (Connection connection = DataSourceConfig.getConnection();
+             // would be beneficial if I will return the created entity back
+             PreparedStatement preparedStatement = connection.prepareStatement(insertPersonSQL, Statement.RETURN_GENERATED_KEYS)) {
+            // set prepared statement variables
+            preparedStatement.setString(1, personEditView.getEmail());
+            preparedStatement.setString(2, personEditView.getFirstName());
+            preparedStatement.setString(3, personEditView.getNickname());
+            preparedStatement.setString(4, personEditView.getSurname());
+            preparedStatement.setLong(5, personEditView.getId());
+
             int affectedRows = preparedStatement.executeUpdate();
 
             if (affectedRows == 0) {

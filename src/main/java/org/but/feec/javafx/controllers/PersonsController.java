@@ -2,8 +2,10 @@ package org.but.feec.javafx.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.but.feec.javafx.App;
 import org.but.feec.javafx.api.PersonBasicView;
@@ -56,7 +58,7 @@ public class PersonsController {
         personsId.setCellValueFactory(new PropertyValueFactory<PersonBasicView, Long>("id"));
         personsCity.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("city"));
         personsEmail.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("email"));
-        personsFamilyName.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("givenName"));
+        personsFamilyName.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("familyName"));
         personsGivenName.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("givenName"));
 
 
@@ -65,7 +67,30 @@ public class PersonsController {
 
         systemPersonsTableView.getSortOrder().add(personsId);
 
+        initializeTableViewSelection();
         loadIcons();
+    }
+
+    private void initializeTableViewSelection() {
+        MenuItem edit = new MenuItem("Edit person");
+        MenuItem detailedView = new MenuItem("Detailed person view");
+        edit.setOnAction((ActionEvent event) -> {
+            System.out.println("Edit person");
+            PersonBasicView item = systemPersonsTableView.getSelectionModel().getSelectedItem();
+            System.out.println("Selected item: " + item);
+        });
+
+        detailedView.setOnAction((ActionEvent event) -> {
+            System.out.println("Detailed person view");
+            PersonBasicView item = systemPersonsTableView.getSelectionModel().getSelectedItem();
+            System.out.println("Selected item: " + item);
+        });
+
+
+        ContextMenu menu = new ContextMenu();
+        menu.getItems().add(edit);
+        menu.getItems().addAll(detailedView);
+        systemPersonsTableView.setContextMenu(menu);
     }
 
     private ObservableList<PersonBasicView> initializePersonsData() {
