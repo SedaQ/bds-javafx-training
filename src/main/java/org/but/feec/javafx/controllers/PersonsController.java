@@ -2,13 +2,12 @@ package org.but.feec.javafx.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.but.feec.javafx.App;
 import org.but.feec.javafx.api.PersonBasicView;
+import org.but.feec.javafx.api.PersonDetailView;
 import org.but.feec.javafx.data.PersonRepository;
 import org.but.feec.javafx.exceptions.ExceptionHandler;
 import javafx.event.ActionEvent;
@@ -39,6 +38,8 @@ public class PersonsController {
     @FXML
     private TableColumn<PersonBasicView, String> personsGivenName;
     @FXML
+    private TableColumn<PersonBasicView, String> personsNickname;
+    @FXML
     private TableView<PersonBasicView> systemPersonsTableView;
 //    @FXML
 //    public MenuItem exitMenuItem;
@@ -60,6 +61,7 @@ public class PersonsController {
         personsEmail.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("email"));
         personsFamilyName.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("familyName"));
         personsGivenName.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("givenName"));
+        personsNickname.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("nickname"));
 
 
         ObservableList<PersonBasicView> observablePersonsList = initializePersonsData();
@@ -75,15 +77,53 @@ public class PersonsController {
         MenuItem edit = new MenuItem("Edit person");
         MenuItem detailedView = new MenuItem("Detailed person view");
         edit.setOnAction((ActionEvent event) -> {
-            System.out.println("Edit person");
-            PersonBasicView item = systemPersonsTableView.getSelectionModel().getSelectedItem();
-            System.out.println("Selected item: " + item);
+            PersonBasicView personView = systemPersonsTableView.getSelectionModel().getSelectedItem();
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(App.class.getResource("fxml/PersonEdit.fxml"));
+                Stage stage = new Stage();
+                stage.setUserData(personView);
+                stage.setTitle("BDS JavaFX Edit Person");
+
+                PersonsEditController controller = new PersonsEditController();
+                controller.setStage(stage);
+                fxmlLoader.setController(controller);
+
+                Scene scene = new Scene(fxmlLoader.load(), 600, 500);
+
+                stage.setScene(scene);
+
+                stage.show();
+            } catch (IOException ex) {
+                ExceptionHandler.handleException(ex);
+            }
         });
 
         detailedView.setOnAction((ActionEvent event) -> {
-            System.out.println("Detailed person view");
-            PersonBasicView item = systemPersonsTableView.getSelectionModel().getSelectedItem();
-            System.out.println("Selected item: " + item);
+            PersonBasicView personView = systemPersonsTableView.getSelectionModel().getSelectedItem();
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(App.class.getResource("fxml/PersonsDetailView.fxml"));
+                Stage stage = new Stage();
+
+                Long personId = personView.getId();
+                PersonDetailView personDetailView = personService.getPersonDetailView(personId);
+
+                stage.setUserData(personDetailView);
+                stage.setTitle("BDS JavaFX Persons Detailed View");
+
+                PersonsDetailViewController controller = new PersonsDetailViewController();
+                controller.setStage(stage);
+                fxmlLoader.setController(controller);
+
+                Scene scene = new Scene(fxmlLoader.load(), 600, 500);
+
+                stage.setScene(scene);
+
+                stage.show();
+            } catch (IOException ex) {
+                ExceptionHandler.handleException(ex);
+            }
         });
 
 
