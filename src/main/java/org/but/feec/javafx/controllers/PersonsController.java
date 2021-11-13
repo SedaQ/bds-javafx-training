@@ -2,26 +2,30 @@ package org.but.feec.javafx.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.but.feec.javafx.App;
 import org.but.feec.javafx.api.PersonBasicView;
 import org.but.feec.javafx.data.PersonRepository;
 import org.but.feec.javafx.exceptions.ExceptionHandler;
-import de.jensd.fx.glyphs.GlyphsDude;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import org.but.feec.javafx.services.PersonService;
 
+import java.io.IOException;
 import java.util.List;
 
 public class PersonsController {
 
+    @FXML
+    public Button addPersonButton;
+    @FXML
+    public Button refreshButton;
     @FXML
     private TableColumn<PersonBasicView, Long> personsId;
     @FXML
@@ -47,7 +51,6 @@ public class PersonsController {
     private void initialize() {
         personRepository = new PersonRepository();
         personService = new PersonService(personRepository);
-
 //        GlyphsDude.setIcon(exitMenuItem, FontAwesomeIcon.CLOSE, "1em");
 
         personsId.setCellValueFactory(new PropertyValueFactory<PersonBasicView, Long>("id"));
@@ -60,12 +63,13 @@ public class PersonsController {
         ObservableList<PersonBasicView> observablePersonsList = initializePersonsData();
         systemPersonsTableView.setItems(observablePersonsList);
 
+        systemPersonsTableView.getSortOrder().add(personsId);
+
         loadIcons();
     }
 
     private ObservableList<PersonBasicView> initializePersonsData() {
         List<PersonBasicView> persons = personService.getPersonsBasicView();
-        persons.forEach(p -> System.out.println(p.getEmail()));
         return FXCollections.observableArrayList(persons);
     }
 
@@ -80,13 +84,31 @@ public class PersonsController {
         System.exit(0);
     }
 
-    public void openContentEncryptDecrypt(ActionEvent event) {
+    public void handleAddPersonButton(ActionEvent actionEvent) {
         try {
-            Pane root = FXMLLoader.load(App.class.getResource("fxml/EncryptionDecryptionContent.fxml"));
-//            dashboardContent.getChildren().setAll(root);
-        } catch (Exception ex) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(App.class.getResource("fxml/PersonsCreate.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 500);
+            Stage stage = new Stage();
+            stage.setTitle("BDS JavaFX Create Person");
+            stage.setScene(scene);
+
+//            Stage stageOld = (Stage) signInButton.getScene().getWindow();
+//            stageOld.close();
+//
+//            stage.getIcons().add(new Image(App.class.getResourceAsStream("logos/vut.jpg")));
+//            authConfirmDialog();
+
+            stage.show();
+        } catch (IOException ex) {
             ExceptionHandler.handleException(ex);
         }
     }
 
+    public void handleRefreshButton(ActionEvent actionEvent) {
+        ObservableList<PersonBasicView> observablePersonsList = initializePersonsData();
+        systemPersonsTableView.setItems(observablePersonsList);
+        systemPersonsTableView.refresh();
+        systemPersonsTableView.sort();
+    }
 }

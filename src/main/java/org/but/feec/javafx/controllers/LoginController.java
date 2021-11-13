@@ -1,7 +1,6 @@
 package org.but.feec.javafx.controllers;
 
 import org.but.feec.javafx.App;
-import org.but.feec.javafx.config.DataSourceConfig;
 import org.but.feec.javafx.data.PersonRepository;
 import org.but.feec.javafx.exceptions.DataAccessException;
 import org.but.feec.javafx.exceptions.ExceptionHandler;
@@ -22,6 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -44,6 +45,8 @@ public class LoginController {
     private PersonRepository personRepository;
     private AuthService authService;
 
+    private ValidationSupport validation;
+
     public LoginController() {
     }
 
@@ -62,8 +65,17 @@ public class LoginController {
                 handleSignIn();
             }
         });
+
         initializeLogos();
         initializeServices();
+        initializeValidations();
+    }
+
+    private void initializeValidations() {
+        validation = new ValidationSupport();
+        validation.registerValidator(usernameTextfield, Validator.createEmptyValidator("The username must not be empty."));
+        validation.registerValidator(passwordTextField, Validator.createEmptyValidator("The password must not be empty."));
+        signInButton.disableProperty().bind(validation.invalidProperty());
     }
 
     private void initializeServices() {
@@ -91,7 +103,7 @@ public class LoginController {
         try {
             boolean authenticated = authService.authenticate(username, password);
             if (authenticated) {
-                showDashboardWindow();
+                showPersonsView();
             } else {
                 showInvalidPaswordDialog();
             }
@@ -100,13 +112,13 @@ public class LoginController {
         }
     }
 
-    private void showDashboardWindow() {
+    private void showPersonsView() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(App.class.getResource("fxml/Persons.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1050, 600);
             Stage stage = new Stage();
-            stage.setTitle("Demonstrator of HW Crypto Accelerator");
+            stage.setTitle("BDS JavaFX Demo App");
             stage.setScene(scene);
 
             Stage stageOld = (Stage) signInButton.getScene().getWindow();
@@ -154,9 +166,7 @@ public class LoginController {
         } else if (result.get() == ButtonType.CANCEL) {
             System.out.println("cancel clicked");
         }
-
     }
-
 
     public void handleOnEnterActionPassword(ActionEvent dragEvent) {
         handleSignIn();
