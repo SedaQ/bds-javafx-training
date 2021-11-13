@@ -106,3 +106,10 @@ Caused by: org.postgresql.util.PSQLException: FATAL: database "db-training" does
 	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
 	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
 	... 35 common frames omitted
+1314 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+1888 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+10917 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+15772 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsEditController - PersonsEditController initialized
+1605 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+8653 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+12541 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsEditController - PersonsEditController initialized

@@ -95,7 +95,7 @@ public class PersonRepository {
 
     public void editPerson(PersonEditView personEditView) {
         String insertPersonSQL = "UPDATE bds.person p SET email = ?, first_name = ?, nickname = ?, surname = ? WHERE p.id_person = ?";
-        String checkIfExists = "SELECT email FROM bds.person WHERE p.id_person = ?";
+        String checkIfExists = "SELECT email FROM bds.person p WHERE p.id_person = ?";
         try (Connection connection = DataSourceConfig.getConnection();
              // would be beneficial if I will return the created entity back
              PreparedStatement preparedStatement = connection.prepareStatement(insertPersonSQL, Statement.RETURN_GENERATED_KEYS)) {
@@ -110,6 +110,7 @@ public class PersonRepository {
                 connection.setAutoCommit(false);
                 try (PreparedStatement ps = connection.prepareStatement(checkIfExists, Statement.RETURN_GENERATED_KEYS)) {
                     ps.setLong(1, personEditView.getId());
+                    ps.execute();
                 } catch (SQLException e) {
                     throw new DataAccessException("This person for edit do not exists.");
                 }
@@ -122,6 +123,8 @@ public class PersonRepository {
                 connection.commit();
             } catch (SQLException e) {
                 connection.rollback();
+            } finally {
+                connection.setAutoCommit(true);
             }
         } catch (SQLException e) {
             throw new DataAccessException("Creating person failed operation on the database failed.");
