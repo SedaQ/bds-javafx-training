@@ -107,7 +107,8 @@ public class PersonRepository {
             preparedStatement.setLong(5, personEditView.getId());
 
             try {
-                connection.setAutoCommit(false);
+                // TODO set connection autocommit to false
+                /* HERE */
                 try (PreparedStatement ps = connection.prepareStatement(checkIfExists, Statement.RETURN_GENERATED_KEYS)) {
                     ps.setLong(1, personEditView.getId());
                     ps.execute();
@@ -120,11 +121,14 @@ public class PersonRepository {
                 if (affectedRows == 0) {
                     throw new DataAccessException("Creating person failed, no rows affected.");
                 }
-                connection.commit();
+                // TODO commit the transaction (both queries were performed)
+                /* HERE */
             } catch (SQLException e) {
-                connection.rollback();
+                // TODO rollback the transaction if something wrong occurs
+                /* HERE */
             } finally {
-                connection.setAutoCommit(true);
+                // TODO set connection autocommit back to true
+                /* HERE */
             }
         } catch (SQLException e) {
             throw new DataAccessException("Creating person failed operation on the database failed.");
