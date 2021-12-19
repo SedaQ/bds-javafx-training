@@ -1,4 +1,5 @@
 # Eclipse
+
 .classpath
 .project
 .settings/
@@ -13,4 +14,5 @@
  
 # Maven
 logs/
+*.log
 target/

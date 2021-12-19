@@ -30,10 +30,10 @@ public class PersonCreateController {
     private TextField newPersonEmail;
 
     @FXML
-    private TextField newPersonFirstName;
+    private TextField newPersonGivenName;
 
     @FXML
-    private TextField newPersonLastName;
+    private TextField newPersonFamilyName;
 
     @FXML
     private TextField newPersonNickname;
@@ -52,8 +52,8 @@ public class PersonCreateController {
 
         validation = new ValidationSupport();
         validation.registerValidator(newPersonEmail, Validator.createEmptyValidator("The email must not be empty."));
-        validation.registerValidator(newPersonFirstName, Validator.createEmptyValidator("The first name must not be empty."));
-        validation.registerValidator(newPersonLastName, Validator.createEmptyValidator("The last name must not be empty."));
+        validation.registerValidator(newPersonGivenName, Validator.createEmptyValidator("The first name must not be empty."));
+        validation.registerValidator(newPersonFamilyName, Validator.createEmptyValidator("The last name must not be empty."));
         validation.registerValidator(newPersonNickname, Validator.createEmptyValidator("The nickname must not be empty."));
         validation.registerValidator(newPersonPwd, Validator.createEmptyValidator("The password must not be empty."));
 
@@ -66,16 +66,16 @@ public class PersonCreateController {
     void handleCreateNewPerson(ActionEvent event) {
         // can be written easier, its just for better explanation here on so many lines
         String email = newPersonEmail.getText();
-        String firstName = newPersonFirstName.getText();
-        String lastName = newPersonLastName.getText();
+        String firstName = newPersonGivenName.getText();
+        String lastName = newPersonFamilyName.getText();
         String nickname = newPersonNickname.getText();
         String password = newPersonPwd.getText();
 
         PersonCreateView personCreateView = new PersonCreateView();
         personCreateView.setPwd(password.toCharArray());
         personCreateView.setEmail(email);
-        personCreateView.setFirstName(firstName);
-        personCreateView.setSurname(lastName);
+        personCreateView.setGivenName(firstName);
+        personCreateView.setFamilyName(lastName);
         personCreateView.setNickname(nickname);
 
         personService.createPerson(personCreateView);

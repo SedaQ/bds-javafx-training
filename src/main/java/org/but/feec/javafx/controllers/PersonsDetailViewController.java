@@ -18,10 +18,10 @@ public class PersonsDetailViewController {
     private TextField emailTextField;
 
     @FXML
-    private TextField firstNameTextField;
+    private TextField givenNameTextField;
 
     @FXML
-    private TextField lastNameTextField;
+    private TextField familyNameTextField;
 
     @FXML
     private TextField nicknameTextField;
@@ -46,8 +46,8 @@ public class PersonsDetailViewController {
     public void initialize() {
         idTextField.setEditable(false);
         emailTextField.setEditable(false);
-        firstNameTextField.setEditable(false);
-        lastNameTextField.setEditable(false);
+        givenNameTextField.setEditable(false);
+        familyNameTextField.setEditable(false);
         nicknameTextField.setEditable(false);
         cityTextField.setEditable(false);
         houseNumberTextField.setEditable(false);
@@ -64,8 +64,8 @@ public class PersonsDetailViewController {
             PersonDetailView personBasicView = (PersonDetailView) stage.getUserData();
             idTextField.setText(String.valueOf(personBasicView.getId()));
             emailTextField.setText(personBasicView.getEmail());
-            firstNameTextField.setText(personBasicView.getGivenName());
-            lastNameTextField.setText(personBasicView.getFamilyName());
+            givenNameTextField.setText(personBasicView.getGivenName());
+            familyNameTextField.setText(personBasicView.getFamilyName());
             nicknameTextField.setText(personBasicView.getNickname());
             cityTextField.setText(personBasicView.getCity());
             houseNumberTextField.setText(personBasicView.gethouseNumber());

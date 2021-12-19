@@ -54,8 +54,8 @@
                 </Label>
                 <TextField fx:id="idTextField" GridPane.columnIndex="1" />
                 <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <TextField fx:id="firstNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextField fx:id="lastNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="givenNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="familyNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <TextField fx:id="nicknameTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="city" GridPane.rowIndex="5">
                <GridPane.margin>

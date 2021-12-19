@@ -51,8 +51,8 @@
                </padding>
             </Label>
             <TextField fx:id="newPersonEmail" promptText="type new person email" GridPane.columnIndex="1" />
-            <TextField fx:id="newPersonFirstName" promptText="type new person first name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="newPersonLastName" promptText="type new person last name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="newPersonGivenName" promptText="type new person first name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="newPersonFamilyName" promptText="type new person last name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="newPersonPwd" promptText="type new person password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="newPersonNickname" promptText="type new person nickname" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
