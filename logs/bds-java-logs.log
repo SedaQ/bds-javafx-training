@@ -1,5 +1,80 @@
-1193 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
-37993 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
-42949 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsEditController - PersonsEditController initialized
-45992 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsDetailViewController - PersonsDetailViewController initialized
-58034 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonCreateController - PersonCreateController initialized
+3360 [main] ERROR o.b.f.j.config.DataSourceConfig - Could not connect to the database.
+com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at org.but.feec.javafx.config.DataSourceConfig.initializeDataSource(DataSourceConfig.java:57)
+	at org.but.feec.javafx.config.DataSourceConfig.initializeDataSource(DataSourceConfig.java:34)
+	at org.but.feec.javafx.App.main(App.java:26)
+	at org.but.feec.javafx.Main.main(Main.java:5)
+Caused by: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:303)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
+	at org.postgresql.Driver.makeConnection(Driver.java:465)
+	at org.postgresql.Driver.connect(Driver.java:264)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 6 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.base/java.net.PlainSocketImpl.waitForConnect(Native Method)
+	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:107)
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399)
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242)
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403)
+	at java.base/java.net.Socket.connect(Socket.java:591)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:231)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:95)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
+	... 15 common frames omitted
+4792 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+2003 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+8761 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+13909 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsDetailViewController - PersonsDetailViewController initialized
+1761 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+1965 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+7664 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+1776 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+9484 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+1745 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+7537 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+1742 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+7704 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+1753 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+6517 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+1726 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+1855 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+1754 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+1726 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+1316 [main] ERROR o.b.f.j.config.DataSourceConfig - Could not connect to the database.
+com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: FATAL: password authentication failed for user "sedaq"
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:596)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:582)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at org.but.feec.javafx.config.DataSourceConfig.initializeDataSource(DataSourceConfig.java:57)
+	at org.but.feec.javafx.config.DataSourceConfig.initializeDataSource(DataSourceConfig.java:42)
+	at org.but.feec.javafx.Main.main(Main.java:9)
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "sedaq"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:613)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:161)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
+	at org.postgresql.Driver.makeConnection(Driver.java:465)
+	at org.postgresql.Driver.connect(Driver.java:264)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	... 5 common frames omitted
+2687 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+1801 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+7021 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized

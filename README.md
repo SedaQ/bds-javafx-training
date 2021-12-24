@@ -12,6 +12,13 @@ Run the project:
 $ java -jar target/bds-javafx-training-1.0.0.jar
 ```
 
+Run the project with externalized `application.properties`:
+```shell
+$ java -jar target/bds-javafx-training-1.0.0.jar "./etc/application.properties"
+```
+
+The `application.properties` file can be located in any place on the system that the application can access.
+
 Sign-in with the following credentials:
 - Username: `radek.kruta@seznam.cz`
 - Password: `batman`
