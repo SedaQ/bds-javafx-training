@@ -15,8 +15,7 @@ public class PersonRepository {
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT email, pwd" +
                              " FROM bds.person p" +
-                             " WHERE p.email = ?")
-        ) {
+                             " WHERE p.email = ?")) {
             preparedStatement.setString(1, email);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
@@ -35,8 +34,7 @@ public class PersonRepository {
                      "SELECT id_person, email, given_name, family_name, nickname, city, house_number, street" +
                              " FROM bds.person p" +
                              " LEFT JOIN bds.address a ON p.id_address = a.id_address" +
-                             " WHERE p.id_person = ?")
-        ) {
+                             " WHERE p.id_person = ?")) {
             preparedStatement.setLong(1, personId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
