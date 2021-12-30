@@ -5,7 +5,7 @@ cache:
     - .m2/repository
 
 variables:
-  PROJECT_ARTIFACT_ID: java-db-training
+  PROJECT_ARTIFACT_ID: bds-javafx-training
   MAVEN_CLI_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
 
 stages:
