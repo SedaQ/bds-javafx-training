@@ -28,8 +28,8 @@ public class DataSourceConfig {
         return ds;
     }
 
-    public static synchronized void initializeDataSource(String appProperties) {
-        if (appProperties == null) {
+    public static synchronized void initializeDataSource(String[] args) {
+        if (args == null || args.length == 0) {
             try (InputStream resourceStream = DataSourceConfig.class.getClassLoader().getResourceAsStream("application.properties")) {
                 initializeDataSource(resourceStream);
             } catch (IOException | NullPointerException | IllegalArgumentException e) {
@@ -38,7 +38,8 @@ public class DataSourceConfig {
                 logger.error("Could not connect to the database.", e);
             }
         } else {
-            try (InputStream resourceStream = Files.newInputStream(Paths.get(appProperties))) {
+            // get first command line argument pointing to the project configurations
+            try (InputStream resourceStream = Files.newInputStream(Paths.get(args[0]))) {
                 initializeDataSource(resourceStream);
             } catch (IOException | NullPointerException | IllegalArgumentException e) {
                 logger.error("Configuration of the datasource was not successful.", e);

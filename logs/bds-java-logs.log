@@ -78,3 +78,7 @@ Caused by: org.postgresql.util.PSQLException: FATAL: password authentication fai
 2687 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
 1801 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
 7021 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+3036 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+11630 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized
+1907 [JavaFX Application Thread] INFO  o.b.f.j.controllers.LoginController - LoginController initialized
+9492 [JavaFX Application Thread] INFO  o.b.f.j.c.PersonsController - PersonsController initialized

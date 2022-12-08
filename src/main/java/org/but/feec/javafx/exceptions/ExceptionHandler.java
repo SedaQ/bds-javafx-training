@@ -12,11 +12,7 @@ import java.io.StringWriter;
 
 public class ExceptionHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
     public static void handleException(Exception ex) {
-        logger.error(ex.getMessage(), ex);
-
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setWidth(700);
         alert.setHeight(700);
