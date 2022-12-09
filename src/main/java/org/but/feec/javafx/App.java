@@ -16,9 +16,6 @@ import javax.xml.crypto.Data;
  */
 public class App extends Application {
 
-    private FXMLLoader loader;
-    private VBox mainStage;
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -26,8 +23,8 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            loader = new FXMLLoader(getClass().getResource("App.fxml"));
-            mainStage = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("App.fxml"));
+            VBox mainStage = loader.load();
 
             primaryStage.setTitle("BDS JavaFX Demo");
             Scene scene = new Scene(mainStage);
