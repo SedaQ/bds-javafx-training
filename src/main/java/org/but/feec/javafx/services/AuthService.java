@@ -1,9 +1,10 @@
 package org.but.feec.javafx.services;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.but.feec.javafx.api.PersonAuthView;
 import org.but.feec.javafx.data.PersonRepository;
 import org.but.feec.javafx.exceptions.ResourceNotFoundException;
+
+import static org.but.feec.javafx.services.Argon2FactoryService.ARGON2;
 
 public class AuthService {
 
@@ -21,15 +22,11 @@ public class AuthService {
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             return false;
         }
-
         PersonAuthView personAuthView = findPersonByEmail(username);
         if (personAuthView == null) {
             throw new ResourceNotFoundException("Provided username is not found.");
         }
-
-        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), personAuthView.getPassword());
-        return result.verified;
+        return ARGON2.verify(personAuthView.getPassword(), password.toCharArray());
     }
-
 
 }

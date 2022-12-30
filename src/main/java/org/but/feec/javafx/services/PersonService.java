@@ -1,6 +1,5 @@
 package org.but.feec.javafx.services;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.but.feec.javafx.api.PersonBasicView;
 import org.but.feec.javafx.api.PersonCreateView;
 import org.but.feec.javafx.api.PersonDetailView;
@@ -8,6 +7,8 @@ import org.but.feec.javafx.api.PersonEditView;
 import org.but.feec.javafx.data.PersonRepository;
 
 import java.util.List;
+
+import static org.but.feec.javafx.services.Argon2FactoryService.ARGON2;
 
 /**
  * Class representing business logic on top of the Persons
@@ -43,14 +44,14 @@ public class PersonService {
 
     /**
      * <p>
-     * Note: For implementation details see: https://github.com/patrickfav/bcrypt
+     * Note: For implementation details see: https://github.com/phxql/argon2-jvm
      * </p>
      *
      * @param password to be hashed
      * @return hashed password
      */
-    private char[] hashPassword(char[] password) {
-        return BCrypt.withDefaults().hashToChar(12, password);
+    public char[] hashPassword(char[] password) {
+        return ARGON2.hash(10, 65536, 1, password).toCharArray();
     }
 
 }
