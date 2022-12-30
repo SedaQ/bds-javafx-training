@@ -8,6 +8,6 @@ public class Argon2FactoryService {
     public static final Argon2 ARGON2 = Argon2Factory.create(
             Argon2Factory.Argon2Types.ARGON2id,
             16,
-            64
+            32
     );
 }
